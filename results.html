@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .pdf-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .pdf-list li {
+            margin: 10px 0;
+        }
+        .pdf-list a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .pdf-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PDF Results</h1>
+    <p>Click on a PDF to view the results.</p>
+
+    <ul id="pdf-list" class="pdf-list">
+        <!-- PDF links will be dynamically generated here -->
+    </ul>
+
+    <script>
+        // Array of PDF files - update this manually with the file names
+        const pdfFiles = [
+            'pdfs/result1.pdf',
+            'pdfs/result2.pdf',
+            'pdfs/result3.pdf' // Add more PDFs here
+        ];
+
+        const pdfList = document.getElementById('pdf-list');
+
+        // Loop through the PDF files array and create list items with links
+        pdfFiles.forEach(pdf => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = pdf;
+            link.target = "_blank";  // Open in a new tab
+            link.textContent = pdf.split('/').pop();  // Show only the file name
+            listItem.appendChild(link);
+            pdfList.appendChild(listItem);
+        });
+    </script>
+
+</body>
+</html>
